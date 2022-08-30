@@ -1,4 +1,3 @@
-from time import sleep
 from pages.base_page import BasePage
 from pages.locators import HomePageLocators
 from pages.site_params import MVideoLinks
@@ -15,7 +14,7 @@ class HomePage(BasePage):
         elif self.width <= MVideoSiteParam.window_width_tablet_max:
             self.site_version = 'tablet'
         else:
-            self.search_field_put_value = 'desktop'
+            self.site_version = 'desktop'
         self.driver.get(self.url)
  
     def __getattribute__(self, item):
@@ -34,13 +33,6 @@ class HomePage(BasePage):
         else:
             return super().__getattribute__(item)
 
-    def search_field_put_value(self, search_value):
-        """ Ввод значения в поле поиска """
-        search_field = self.search_field
-        search_field.clear()
-        search_field.send_keys(search_value)
-        search_field.send_keys(Keys.ENTER)
-
     @staticmethod
     def input_field_put_value(field, value):
         field.clear()
@@ -48,8 +40,7 @@ class HomePage(BasePage):
         field.send_keys(Keys.ENTER)
 
     def wait_for_products_loaded(self):
-        #while self.x_skeleton_listing or self.x_product_cards_layout_loading:
-        while 'class="product-cards-layout product-cards-layout--grid product-cards-layout--loading"' in self.driver.page_source\
-                or 'mvid-skeleton-listing' in self.driver.page_source:
+        while str(HomePageLocators.text_products_loading) in self.driver.page_source\
+                or str(HomePageLocators.text_products_grid_loading) in self.driver.page_source:
             pass
         

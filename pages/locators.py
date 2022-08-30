@@ -72,9 +72,7 @@ class HomePageLocators:
                 'product_cards_layout_loading': (By.CSS_SELECTOR, 'div.product-cards-layout.product-cards-layout--grid.product-cards-layout--loading')
                 }
     
+    text_products_loading = 'class="product-cards-layout product-cards-layout--grid product-cards-layout--loading"',
+    text_products_grid_loading = 'mvid-skeleton-listing'
     
-    
-class MBlogPageLocators:
-    elements = {
-                }
     

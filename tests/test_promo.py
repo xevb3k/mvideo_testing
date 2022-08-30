@@ -4,6 +4,7 @@ from pathlib import Path
 sys.path[0] = str(Path(sys.path[0]).parent)
 from pages.site_params import MVideoLinks
 from pages.home_page import HomePage
+from tests.testdata import *
 
 
 @pytest.mark.smoke
@@ -13,7 +14,7 @@ def test_link_all_stocks(web_driver_desktop):
     page = HomePage(web_driver_desktop)
     page.main_menu_link_all_stocks.click()
     page.wait_page_loaded()
-    assert page.get_relative_link() == MVideoLinks.link_home_page_main_menu_all_stocks
+    assert page.get_relative_link() == MVideoLinks.link_home_page_main_menu_all_stocks, error_test_link_all_stocks
 
 
 @pytest.mark.smoke
@@ -25,7 +26,7 @@ def test_products_of_day_block(web_driver_desktop):
     
     day_products_block = page.x_day_products_block
     day_products_block_text = page.x_day_products_block_text
-    assert len(day_products_block) != 0 and len(day_products_block_text) != 0
+    assert len(day_products_block) != 0 and len(day_products_block_text) != 0, error_test_products_of_day_block
     
 
 @pytest.mark.smoke
@@ -40,7 +41,7 @@ def test_products_of_day_link(web_driver_desktop):
     assert len(day_products) == len(day_products_link)
     
     for prod in day_products_link:
-        assert prod.get_attribute('href') != ''
+        assert prod.get_attribute('href') != '', error_test_products_of_day_link
 
 
 @pytest.mark.smoke
@@ -62,7 +63,7 @@ def test_all_stocks_have_img_url(web_driver_desktop):
         if len(stock.get_attribute('href')) == 0:
             all_stock_have_url = False
             break
-    assert len(stock_list) == len(stock_img_list) and all_stock_have_img and all_stock_have_url
+    assert len(stock_list) == len(stock_img_list) and all_stock_have_img and all_stock_have_url, error_test_all_stocks_have_img_url
 
 
 @pytest.mark.smoke
@@ -78,7 +79,7 @@ def test_all_stocks_compare_url(web_driver_desktop):
     
     for stock, stock_name in zip(stock_list, stock_name_list):
         if stock.get_attribute('href') != stock_name.get_attribute('href'):
-            assert False
+            assert False, error_test_all_stocks_compare_url
     assert True
 
 
@@ -93,7 +94,7 @@ def test_all_stocks_have_name(web_driver_desktop):
     for stock in stock_name_list:
         print(stock.text)
         if stock.text.replace(' ', '') == '':
-            assert False
+            assert False, error_test_all_stocks_have_name
     assert True
 
 
@@ -108,6 +109,6 @@ def test_all_stocks_have_desc(web_driver_desktop):
     for stock in stock_desc_list:
         print(stock.text)
         if stock.text.replace(' ', '') == '':
-            assert False, 'не у всех акций на странице "Все акции" есть крат.описание'
+            assert False, error_test_all_stocks_have_desc
     assert True
     

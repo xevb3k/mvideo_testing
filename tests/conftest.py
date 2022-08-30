@@ -5,7 +5,8 @@ import config
 
 @pytest.fixture(scope='function')
 def web_driver_desktop():
-    """Фикстура инициализирует драйвер браузера, настраивает неявное время ожидания"""
+    """Фикстура инициализирует драйвер браузера, настраивает неявное время ожидания
+       используемый браузер берется из конфигурации"""
     try:
         if config.DEFAULT_BROWSER == 'chrome':
             option = webdriver.ChromeOptions()
@@ -22,7 +23,8 @@ def web_driver_desktop():
 
 @pytest.fixture(scope='function')
 def web_driver(browser, window_width, window_height):
-    """Фикстура инициализирует драйвер браузера, настраивает неявное время ожидания"""
+    """Фикстура инициализирует драйвер браузера, настраивает неявное время ожидания
+       используемый браузер и размеры окна получаем из параметров теста"""
     try:
         if browser == 'chrome':
             option = webdriver.ChromeOptions()
@@ -42,7 +44,8 @@ def web_driver(browser, window_width, window_height):
 
 @pytest.fixture(scope='function')
 def web_driver_desktop_firefox():
-    """Фикстура инициализирует драйвер браузера, настраивает неявное время ожидания"""
+    """Фикстура инициализирует драйвер браузера, настраивает неявное время ожидания
+       Только FireFox в максимальном размере окна"""
     web_driver = webdriver.Firefox(executable_path=config.FIREFOX_DRIVER_PATH)
     web_driver.maximize_window()
     web_driver.implicitly_wait(config.IMPLICITLY_WAIT_TIME)
@@ -52,7 +55,8 @@ def web_driver_desktop_firefox():
 
 @pytest.fixture(scope='function')
 def web_driver_desktop_chrome():
-    """Фикстура инициализирует драйвер браузера, настраивает неявное время ожидания"""
+    """Фикстура инициализирует драйвер браузера, настраивает неявное время ожидания
+    Только Chrome в максимальном размере окна"""
     option = webdriver.ChromeOptions()
     option.add_argument("--disable-notifications")
     web_driver = webdriver.Chrome(executable_path=config.CHROME_DRIVER_PATH, options=option)
