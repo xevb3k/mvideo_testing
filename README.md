@@ -17,8 +17,9 @@
 Установить зависимости:
 
 pip3 install -r requirements
-Скачать Selenium WebDriver с https://chromedriver.chromium.org/downloads 
-(выбрать версию, совместимую с браузером) и скопировать в папку .chromedriver.
+Скачать Selenium Chrome WebDriver с https://chromedriver.chromium.org/downloads
+Скачать Selenium Gecko WebDriver с https://github.com/mozilla/geckodriver/releases
+Путь до скачанных файлов указать в файле config.py
 
 Запустить тесты можно:
 
@@ -29,37 +30,15 @@ pytest -v <test_file_name>::<test_name>
 
 
 Команды для запуска тестов:
-
-python -m pytest -v --driver Chrome --driver-path C://chromedriver/chromedriver.exe /tests/test_auth_page.py
-
-python -m pytest -v --driver Chrome --driver-path C://chromedriver/chromedriver.exe /tests/test_header_btn.py
-
-python -m pytest -v --driver Chrome --driver-path C://chromedriver/chromedriver.exe /tests/test_header_search.py
-
-python -m pytest -v --driver Chrome --driver-path C://chromedriver/chromedriver.exe /tests/test_start_page.py
-
-
-где C://chromedriver/chromedriver.exe находится путь к драйверу Selenium для текущей ОС
+python -m pytest -v --driver `name` --driver-path `driverpath` /tests/`test_name.py`
+Где `name` - имя драйвера (Chrome или Firefox)
 
 Папка .tests:
-
 test_auth_page.py
-
 Тесты осуществляют проверку работы страницы авторизации. 
-
 test_header_btn.py
-
 Тесты осуществляют проверку работы кнопок меню в Header
-
 test_header_search.py
-
 Тесты проверяют работу строки поиска в Header, в том числе с использованием параметризации. 
-
 test_start_page.py
-
 Тесты проверяют корректный вход на сайт с различными параметрами. 
-
-
-
-
-
