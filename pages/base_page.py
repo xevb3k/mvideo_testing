@@ -12,8 +12,7 @@ class BasePage(object):
         self.url = url
         self.height = driver.get_window_size().get('height')
         self.width = driver.get_window_size().get('width')
-#       self.driver.implicitly_wait(wait)
-    
+
     def wait_for_element(self, element: tuple, timeout):
         WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(element))
     
@@ -45,14 +44,6 @@ class BasePage(object):
                          wait_for_element=None,
                          wait_for_xpath_to_disappear='',
                          sleep_time=2):
-        """ This function waits until the page will be completely loaded.
-            We use many different ways to detect is page loaded or not:
-            1) Check JS status
-            2) Check modification in source code of the page
-            3) Check that all images uploaded completely
-               (Note: this check is disabled by default)
-            4) Check that expected elements presented on the page
-        """
 
         page_loaded = False
         double_check = False
