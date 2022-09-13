@@ -8,12 +8,12 @@ search_positive = (['чайник', 'пылесос', 'чайник со сви�
 search_negative = ([StringGenMethods.generate_string(255), StringGenMethods.generate_string(1001),
                     StringGenMethods.russian_chars(), StringGenMethods.russian_chars().upper(),
                     StringGenMethods.english_chars(), StringGenMethods.special_chars()],
-                    ['255 sym', '> 1000 sym', 'russian', 'RUSSIAN', 'english', 'specials'])
+                   ['255 sym', '> 1000 sym', 'russian', 'RUSSIAN', 'english', 'specials'])
 
 price_min_value = ['100', '999', '1000', '49999']
 price_max_value = ['500', '4999', '99999']
 
-test_browsers = ['chrome', 'firefox']
+browsers_list = ['chrome', 'firefox']
 
 window_width_mobile_avg = MVideoSiteParam.window_width_mobile_max // 2
 window_width_tablet_avg = (MVideoSiteParam.window_width_tablet_max -

@@ -10,9 +10,7 @@ from tests.testdata import *
 
 @pytest.mark.smoke
 @pytest.mark.positive
-@pytest.mark.parametrize("browser", test_browsers)
-@pytest.mark.parametrize("window_width, window_height", window_size_list)
-def test_homepage_is_opened(web_driver, window_width, window_height):
+def test_homepage_is_opened(web_driver):
     """Тест проверяет загрузку главной страницы в различных браузерах и с различными размерами окна"""
     page = HomePage(web_driver)
     page.wait_page_loaded()
@@ -21,18 +19,18 @@ def test_homepage_is_opened(web_driver, window_width, window_height):
    
 @pytest.mark.smoke
 @pytest.mark.positive
-def test_logo_click(web_driver_desktop):
+def test_logo_click(web_driver):
     """Тест проверяет загрузку главной страницы при клике на логотип"""
-    page = HomePage(web_driver_desktop)
+    page = HomePage(web_driver)
     page.logo_img.click()
     assert page.driver.current_url == MVideoLinks.home_page_url, error_test_logo_click
 
 
 @pytest.mark.smoke
 @pytest.mark.positive
-def test_link_blog_m_click(web_driver_desktop):
+def test_link_blog_m_click(web_driver):
     """Тест проверяет переход по ссылке "Блог М.Клик" """
-    page = HomePage(web_driver_desktop)
+    page = HomePage(web_driver)
     page.link_blog_m_click.click()
     assert page.get_relative_link() == MVideoLinks.link_home_page_blog_m_click, error_test_link_blog_m_click
 
